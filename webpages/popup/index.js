@@ -43,7 +43,10 @@ const vue = new Vue({
     setPopup(popup) {
       if (this.currentPopup !== popup) {
         this.currentPopup = popup;
-        if (!this.popupsWithIframes.includes(popup)) this.popupsWithIframes.push(popup);
+        if (!this.popupsWithIframes.includes(popup)){
+          this.popupsWithIframes.push(popup);
+        }
+        
         setTimeout(() => document.querySelector("iframe:not([style='display: none;'])").focus(), 0);
       }
     },
@@ -70,8 +73,23 @@ chrome.runtime.sendMessage("getSettingsInfo", (res) => {
     url: "../../webpages/settings/index.html",
     _addonId: "__settings__",
   });
-  vue.popups = popupObjects;
-  vue.setPopup(vue.popups[0]);
+  vue.popups = extendTabs(popupObjects);
+  // vue.setPopup(vue.popups[0]);
+  vue.setPopup(vue.popups[3]);
 });
+
+function extendTabs(popups){
+
+var jsTab = {
+  fullscreen: true,
+  icon: "../../images/icons/envelope.svg",
+  name: "カスタマイズ",
+  _addonId: "customize-pop"
+  };
+
+  popups.push(jsTab);
+  return popups;
+
+}
 
 chrome.runtime.sendMessage("checkPermissions");

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <!-- <script src="../../webpages/set-lang.js" defer></script> -->
+    <link rel="stylesheet" href="popup.css" />
+    <link href="../../libraries/Sora.css" rel="stylesheet" />
+    <link href="../../libraries/codemirror/codemirror.min.css" rel="stylesheet" />
+
+    <script src="../../libraries/vue.js" defer></script>
+    <script src="./popup.js" type="module"></script>
+
+    <script src="../../libraries/codemirror/codemirror.min.js" defer></script>
+    <script src="../../libraries/codemirror/mode/javascript.min.js" defer></script>
+    <style>
+        .CodeMirror {
+            font-family: Arial, monospace;
+            font-size: 16px;
+        }
+    </style>
+  </head>
+
+  <body >
+    <div v-show="loaded">
+        <div id="editor"></div>
+
+        <!-- Js: -->
+        <!-- <textarea @input="codeChange" :value="codeStr" class="codeData" name="codeData" id="codeData" cols="30" rows="20"></textarea> -->
+      <!-- <div class="games" v-for="project of projectsSorted">
+        <div class="title">
+          <a class="project-name" :href="'https://scratch.mit.edu/projects/' + project.id" target="_blank"
+            >{{ project.title }}</a
+          >
+          <span class="float-right"
+            ><img class="small-icon" src="../../images/icons/users.svg" /> </span
+          >
+        </div>
+        <div>this is my customize...</div>
+        <div class="project-details" v-show="true || project.amt > 0 && project.extended">
+          <div class="username-list">
+            <a v-for="user of project.users" :href="'https://scratch.mit.edu/users/' + user" target="_blank"
+              >{{ user }}</a
+            >
+          </div>
+          <div class="username-list" v-show="project.amt === 0">{{ messages.noUsersMsg }}</div>
+        </div>
+      </div> -->
+
+      <div>
+          <button @click="btnRunClick">Run</button>
+      </div>
+
+      <div>
+          <div>result:</div>
+          <div v-html="runResult"></div>
+      </div>
+
+    </div>
+  </body>
+</html>
